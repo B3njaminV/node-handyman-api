@@ -2,11 +2,6 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let HandyManSchema = Schema({
-    id: {
-        type: Number,
-        required: true,
-        unique: true,
-    },
     name: String,
     avatarUrl: String,
     aboutMe: String,
