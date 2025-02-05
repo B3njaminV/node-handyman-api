@@ -109,4 +109,4 @@ async function deleteOne(req, res) {
     }
 }
 
-module.exports = { getAll, create, createMany, getOne, update, deleteOne };
+module.exports = { getAll, create, getOne, update, deleteOne };
