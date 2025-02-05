@@ -6,9 +6,9 @@ let HandyManSchema = new Schema({
     name: String,
     avatarUrl: String,
     aboutMe: String,
-    phone: String,
+    phoneNumber: String,
     address: String,
-    isFavorite: Boolean,
+    favorite: Boolean,
     webSite: String
 }, { _id: false });
 
