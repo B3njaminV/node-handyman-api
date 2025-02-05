@@ -26,7 +26,7 @@ function getOne(req, res) {
 }
 
 function create(req, res) {
-    const { id, name, avatarUrl, aboutMe, phone, address, isFavorite, webSite } = req.body;
+    const { id, name, avatarUrl, aboutMe, phoneNumber, address, favorite, webSite } = req.body;
 
     if (!id) {
         return res.status(400).json({ error: 'ID is required' });
@@ -37,9 +37,9 @@ function create(req, res) {
         name: name,
         avatarUrl: avatarUrl,
         aboutMe: aboutMe,
-        phone: phone,
+        phoneNumber: phoneNumber,
         address: address,
-        isFavorite: isFavorite,
+        favorite: favorite,
         webSite: webSite
     });
 
