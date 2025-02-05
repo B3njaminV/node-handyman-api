@@ -40,6 +40,9 @@ app.route(prefix + '/handymans')
     .get(handymen.getAll)
     .post(handymen.create);
 
+app.route(prefix + '/handymens')
+    .post(handymen.createMany);
+
 app.route(prefix + '/handymans/:id')
     .get(handymen.getOne)
     .delete(handymen.deleteOne)

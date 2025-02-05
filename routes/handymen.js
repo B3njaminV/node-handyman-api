@@ -65,6 +65,47 @@ function create(req, res) {
         });
 }
 
+async function createMany(req, res) {
+    try {
+        const handymen = req.body.map(handyman => {
+            if (!handyman.id) {
+                throw new Error('ID is required');
+            }
+
+            return {
+                _id: handyman.id,
+                name: handyman.name,
+                avatarUrl: handyman.avatarUrl,
+                aboutMe: handyman.aboutMe,
+                phoneNumber: handyman.phoneNumber,
+                address: handyman.address,
+                favorite: handyman.favorite,
+                webSite: handyman.webSite
+            };
+
+        });
+
+        const result = await HandyMan.insertMany(handymen);
+        res.status(201).json({
+            message: 'Handymen saved successfully',
+            ids: result.map(handyman => handyman._id)
+        });
+
+    } catch (err) {
+        if (err.code === 11000) {
+            return res.status(400).json({
+                error: 'Duplicate ID',
+                details: `The ID ${err.keyValue._id} already exists in the database.`
+            });
+        }
+
+        res.status(500).json({
+            error: 'Failed to create handymen',
+            details: err.message
+        });
+    }
+}
+
 async function update(req, res) {
     try {
         const handyman = await HandyMan.findOneAndUpdate(
@@ -109,4 +150,4 @@ async function deleteOne(req, res) {
     }
 }
 
-module.exports = { getAll, create, getOne, update, deleteOne };
+module.exports = { getAll, create, createMany, getOne, update, deleteOne };

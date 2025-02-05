@@ -19,6 +19,7 @@ HandyManSchema.virtual('id').get(function () {
 HandyManSchema.set('toJSON', {
     virtuals: true,
     transform: function (doc, ret) {
+        ret.id = Number(ret.id);
         delete ret._id;
         return ret;
     }
