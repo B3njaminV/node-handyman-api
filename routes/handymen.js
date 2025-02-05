@@ -26,12 +26,12 @@ function getOne(req, res) {
 }
 
 function create(req, res) {
-    if (!req.body.id) {
+    if (!req.body._id) {
         return res.status(400).json({ error: 'ID is required' });
     }
 
     let handyman = new HandyMan({
-        _id: req.body.id,
+        _id: req.body._id,
         name: req.body.name,
         avatarUrl: req.body.avatarUrl,
         aboutMe: req.body.aboutMe,
