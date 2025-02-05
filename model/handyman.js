@@ -1,7 +1,8 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-let HandyManSchema = Schema({
+let HandyManSchema = new Schema({
+    _id: Number,
     name: String,
     avatarUrl: String,
     aboutMe: String,
@@ -9,7 +10,6 @@ let HandyManSchema = Schema({
     address: String,
     isFavorite: Boolean,
     webSite: String
-});
+}, { _id: false });
 
-// C'est à travers ce modèle Mongoose qu'on pourra faire le CRUD
 module.exports = mongoose.model('HandyMan', HandyManSchema);

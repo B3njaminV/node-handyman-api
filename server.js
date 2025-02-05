@@ -31,22 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // 🔹 Port et IP locale
-let port = process.env.PORT || 8010;
-
-// 🔹 Détecter l'IP locale du PC
-function getLocalIp() {
-    let interfaces = os.networkInterfaces();
-    for (let dev in interfaces) {
-        for (let details of interfaces[dev]) {
-            if (details.family === 'IPv4' && !details.internal) {
-                return details.address;
-            }
-        }
-    }
-    return '127.0.0.1'; // Si échec, utiliser localhost
-}
-
-let localIp = getLocalIp();
+let port = process.env.PORT || 8080;
 
 // 🔹 Définition des routes API
 const prefix = '/api';
@@ -64,7 +49,7 @@ app.route(prefix + '/handymans/:id')
 app.listen(port, "0.0.0.0", () => {
     console.log(`🚀 Serveur Express démarré !`);
     console.log(`📌 Accédez à l'API depuis votre PC : http://localhost:${port}/api/handymans`);
-    console.log(`📱 Accédez à l'API depuis votre téléphone : http://${localIp}:${port}/api/handymans`);
+    console.log(`📱 Accédez à l'API depuis internet : http://144.24.197.144:8080/api/handymans`);
 });
 
 module.exports = app;

@@ -1,11 +1,13 @@
 let HandyMan = require('../model/handyman');
 
 function getAll(req, res) {
-    HandyMan.find().then((handymen) => {
-        res.send(handymen);
-    }).catch((err) => {
-        res.send(err);
-    });
+    HandyMan.find()
+        .then((handymen) => {
+            res.json(handymen);
+        })
+        .catch((err) => {
+            res.status(500).json({ error: 'Error fetching handymen', details: err.message });
+        });
 }
 
 function getOne(req, res) {
@@ -13,53 +15,69 @@ function getOne(req, res) {
     HandyMan.findById(id)
         .then((handyman) => {
             if (!handyman) {
-                res.status(404).send('handyman not found');
+                res.status(404).json({ error: 'Handyman not found' });
             } else {
-                res.send(handyman);
+                res.json(handyman);
             }
         })
         .catch((err) => {
-            res.send(err);
+            res.status(500).json({ error: 'Error fetching handyman', details: err.message });
         });
 }
 
 function create(req, res) {
-    let handyman = new HandyMan();
-    handyman.name = req.body.name;
-    handyman.avatarUrl = req.body.avatarUrl;
-    handyman.aboutMe = req.body.aboutMe;
-    handyman.phone = req.body.phone;
-    handyman.address = req.body.address;
-    handyman.isFavorite = req.body.isFavorite;
-    handyman.webSite = req.body.webSite;
+    if (!req.body.id) {
+        return res.status(400).json({ error: 'ID is required' });
+    }
 
-    console.log(handyman)
+    let handyman = new HandyMan({
+        _id: req.body.id,
+        name: req.body.name,
+        avatarUrl: req.body.avatarUrl,
+        aboutMe: req.body.aboutMe,
+        phone: req.body.phone,
+        address: req.body.address,
+        isFavorite: req.body.isFavorite,
+        webSite: req.body.webSite
+    });
 
     handyman.save()
-        .then((handyman) => {
-                res.json({message: `${handyman.name} saved with id ${handyman.id}!`});
-            }
-        ).catch((err) => {
-        res.send('cant post handyman ', err);
-    });
+        .then((savedHandyman) => {
+            res.status(201).json({
+                message: `${savedHandyman.name} saved successfully`,
+                id: savedHandyman._id
+            });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                error: 'Failed to create handyman',
+                details: err.message
+            });
+        });
 }
 
 async function update(req, res) {
-    console.log(req.body);
     try {
-        const handyman = await HandyMan.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        const handyman = await HandyMan.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true, runValidators: true }
+        );
 
         if (!handyman) {
-            return res.status(404).json({message: 'handyman not found'});
+            return res.status(404).json({ error: 'Handyman not found' });
         }
 
-        res.json({message: 'Updated successfully', handyman: handyman});
+        res.json({
+            message: 'Updated successfully',
+            handyman: handyman
+        });
     } catch (err) {
-        console.error('Error updating handyman:', err);
-        res.status(500).send(err);
+        res.status(500).json({
+            error: 'Failed to update handyman',
+            details: err.message
+        });
     }
-
-
 }
 
 async function deleteOne(req, res) {
@@ -67,16 +85,19 @@ async function deleteOne(req, res) {
         const handyman = await HandyMan.findByIdAndDelete(req.params.id);
 
         if (!handyman) {
-            return res.status(404).json({message: 'handyman not found'});
+            return res.status(404).json({ error: 'Handyman not found' });
         }
 
-        res.json({message: `${handyman.name} deleted successfully`});
+        res.json({
+            message: `${handyman.name} deleted successfully`,
+            id: handyman._id
+        });
     } catch (err) {
-        console.error('Error deleting handyman:', err);
-        res.status(500).send(err);
+        res.status(500).json({
+            error: 'Failed to delete handyman',
+            details: err.message
+        });
     }
-
 }
-
 
 module.exports = {getAll, create, getOne, update, deleteOne};
