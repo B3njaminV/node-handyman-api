@@ -11,8 +11,8 @@ function getAll(req, res) {
 }
 
 function getOne(req, res) {
-    let id = req.params.id;
-    HandyMan.findById(id)
+    let id = parseInt(req.params.id);
+    HandyMan.findOne({ _id: id })
         .then((handyman) => {
             if (!handyman) {
                 res.status(404).json({ error: 'Handyman not found' });
@@ -26,19 +26,21 @@ function getOne(req, res) {
 }
 
 function create(req, res) {
-    if (!req.body._id) {
+    const { id, name, avatarUrl, aboutMe, phone, address, isFavorite, webSite } = req.body;
+
+    if (!id) {
         return res.status(400).json({ error: 'ID is required' });
     }
 
     let handyman = new HandyMan({
-        _id: req.body._id,
-        name: req.body.name,
-        avatarUrl: req.body.avatarUrl,
-        aboutMe: req.body.aboutMe,
-        phone: req.body.phone,
-        address: req.body.address,
-        isFavorite: req.body.isFavorite,
-        webSite: req.body.webSite
+        _id: id,
+        name: name,
+        avatarUrl: avatarUrl,
+        aboutMe: aboutMe,
+        phone: phone,
+        address: address,
+        isFavorite: isFavorite,
+        webSite: webSite
     });
 
     handyman.save()
@@ -49,6 +51,13 @@ function create(req, res) {
             });
         })
         .catch((err) => {
+            if (err.code === 11000) {
+                return res.status(400).json({
+                    error: 'Duplicate ID',
+                    details: `The ID ${id} already exists in the database.`
+                });
+            }
+
             res.status(500).json({
                 error: 'Failed to create handyman',
                 details: err.message
@@ -58,8 +67,8 @@ function create(req, res) {
 
 async function update(req, res) {
     try {
-        const handyman = await HandyMan.findByIdAndUpdate(
-            req.params.id,
+        const handyman = await HandyMan.findOneAndUpdate(
+            { _id: parseInt(req.params.id) },
             req.body,
             { new: true, runValidators: true }
         );
@@ -82,7 +91,7 @@ async function update(req, res) {
 
 async function deleteOne(req, res) {
     try {
-        const handyman = await HandyMan.findByIdAndDelete(req.params.id);
+        const handyman = await HandyMan.findOneAndDelete({ _id: parseInt(req.params.id) });
 
         if (!handyman) {
             return res.status(404).json({ error: 'Handyman not found' });
@@ -100,4 +109,4 @@ async function deleteOne(req, res) {
     }
 }
 
-module.exports = {getAll, create, getOne, update, deleteOne};
+module.exports = { getAll, create, createMany, getOne, update, deleteOne };
