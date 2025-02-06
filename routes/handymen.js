@@ -45,10 +45,7 @@ function create(req, res) {
 
     handyman.save()
         .then((savedHandyman) => {
-            res.status(201).json({
-                message: `${savedHandyman.name} saved successfully`,
-                id: savedHandyman._id
-            });
+            res.status(201).json(savedHandyman);
         })
         .catch((err) => {
             if (err.code === 11000) {
