@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "642ef307-393d-4728-9a00-17e0e5829fc6",
+		"name": "Handyman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26014237"
+	},
+	"item": [
+		{
+			"name": "GET ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://144.24.197.1448080/api/handymans",
+					"protocol": "http",
+					"host": [
+						"144",
+						"24",
+						"197",
+						"1448080"
+					],
+					"path": [
+						"api",
+						"handymans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 12,\r\n        \"name\": \"Ludovic API\",\r\n        \"avatarUrl\": \"https://picsum.photos/500/500?random=12\",\r\n        \"address\": \"Saint-Pierre-du-Mont ; 5km\",\r\n        \"phoneNumber\": \"+33 6 00 01 10 11\",\r\n        \"aboutMe\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce porttitor molestie libero, nec porta lectus posuere a. Curabitur in purus at enim commodo accumsan. Nullam molestie diam a massa finibus, in bibendum nulla ullamcorper. Nunc at enim enim. Maecenas quis posuere nisi. Mauris suscipit cursus velit id condimentum. Ut finibus turpis at nulla finibus sollicitudin. Nunc dolor mauris, blandit id ullamcorper vel, lacinia ac nisi. Vestibulum et sapien tempor, egestas lorem vitae, faucibus urna. Duis id odio massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\",\r\n        \"favorite\": false,\r\n        \"webSite\": \"www.facebook.fr/ludovic\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://144.24.197.144:8080/api/handymans",
+					"protocol": "http",
+					"host": [
+						"144",
+						"24",
+						"197",
+						"144"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"handymans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST ALL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": 1,\r\n        \"name\": \"Caroline API\",\r\n        \"avatarUrl\": \"https://picsum.photos/500/500?random=1\",\r\n        \"address\": \"Saint-Pierre-du-Mont ; 5km\",\r\n        \"phoneNumber\": \"+33 6 86 57 90 14\",\r\n        \"aboutMe\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor id sem ut blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed hendrerit ex. Cras a tempus risus. Aliquam egestas nulla non luctus blandit. Aenean dignissim massa ultrices volutpat bibendum. Integer semper diam et lorem iaculis pulvinar.\",\r\n        \"favorite\": true,\r\n        \"webSite\": \"www.facebook.fr/caroline\"\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"name\": \"Jack API\",\r\n        \"avatarUrl\": \"https://picsum.photos/500/500?random=2\",\r\n        \"address\": \"Saint-Pierre-du-Mont ; 5km\",\r\n        \"phoneNumber\": \"+33 6 00 55 90 14\",\r\n        \"aboutMe\": \"Sed eget fringilla mauris, ac rutrum mauris. Curabitur finibus felis id justo porttitor, vitae hendrerit justo imperdiet. Donec tempus quam vulputate, elementum arcu a, molestie felis. Pellentesque eu risus luctus, tincidunt odio at, volutpat magna. Nam scelerisque vitae est vitae fermentum. Cras suscipit pretium ex, ut condimentum lorem sagittis sit amet. Praesent et gravida diam, at commodo lorem. Praesent tortor dui, fermentum vitae sollicitudin ut, elementum ut magna. Nulla volutpat tincidunt lectus, vel malesuada ante ultrices id.\\n\\nUt scelerisque fringilla leo vitae dictum. Nunc suscipit urna tellus, a elementum eros accumsan vitae. Nunc lacinia turpis eu consectetur elementum. Cras scelerisque laoreet mauris ac pretium. Nam pellentesque ut orci ut scelerisque. Aliquam quis metus egestas, viverra neque vel, ornare velit. Nullam lobortis justo et ipsum sodales sodales. Etiam volutpat laoreet tellus, ultrices maximus nulla luctus ultricies. Praesent a dapibus arcu. In at magna in velit placerat vehicula nec in purus.\",\r\n        \"favorite\": true,\r\n        \"webSite\": \"www.facebook.fr/jack\"\r\n    },\r\n    {\r\n        \"id\": 3,\r\n        \"name\": \"Chloé API\",\r\n        \"avatarUrl\": \"https://picsum.photos/500/500?random=3\",\r\n        \"address\": \"Saint-Pierre-du-Mont ; 6km\",\r\n        \"phoneNumber\": \"+33 6 86 13 12 14\",\r\n        \"aboutMe\": \"Sed ultricies suscipit semper. Fusce non blandit quam.\",\r\n        \"favorite\": false,\r\n        \"webSite\": \"www.facebook.fr/chloe\"\r\n    },\r\n    {\r\n        \"id\": 4,\r\n        \"name\": \"Vincent API\",\r\n        \"avatarUrl\": \"https://picsum.photos/500/500?random=4\",\r\n        \"address\": \"Saint-Pierre-du-Mont ; 11km\",\r\n        \"phoneNumber\": \"+33 6 10 57 90 19\",\r\n        \"aboutMe\": \"Etiam quis neque egestas, consectetur est quis, laoreet augue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ipsum sem, commodo in nisi maximus, semper dignissim metus. Fusce eget nunc sollicitudin, dignissim tortor quis, consectetur mauris.\",\r\n        \"favorite\": true,\r\n        \"webSite\": \"www.facebook.fr/vincent\"\r\n    },\r\n    {\r\n        \"id\": 5,\r\n        \"name\": \"Elodie API\",\r\n        \"avatarUrl\": \"https://picsum.photos/500/500?random=5\",\r\n        \"address\": \"Saint-Pierre-du-Mont ; 8km\",\r\n        \"phoneNumber\": \"+33 6 86 57 90 14\",\r\n        \"aboutMe\": \"Fusce in ligula mi. Aliquam in sagittis tellus. Suspendisse tempor, velit et cursus facilisis, eros sapien sollicitudin mauris, et ultrices lectus sapien in neque.\",\r\n        \"favorite\": true,\r\n        \"webSite\": \"www.facebook.fr/elodie\"\r\n    },\r\n    {\r\n        \"id\": 6,\r\n        \"name\": \"Sylvain API\",\r\n        \"avatarUrl\": \"https://picsum.photos/500/500?random=6\",\r\n        \"address\": \"Saint-Pierre-du-Mont ; 6km\",\r\n        \"phoneNumber\": \"+33 6 86 12 22 02\",\r\n        \"aboutMe\": \"Integer pulvinar lacinia augue, a tempor ex semper eget. Nam lacinia lorem dapibus, pharetra ante in, auctor urna. Praesent sollicitudin metus sit amet nunc lobortis sodales. In eget ante congue, vestibulum leo ac, placerat leo. Nullam arcu purus, cursus a sollicitudin eu, lobortis vitae est. Sed sodales sit amet magna nec finibus. Nulla pellentesque, justo ut bibendum mollis, urna diam hendrerit dolor, non gravida urna quam id eros.\",\r\n        \"favorite\": false,\r\n        \"webSite\": \"www.facebook.fr/sylvain\"\r\n    },\r\n    {\r\n        \"id\": 7,\r\n        \"name\": \"Laetitia API\",\r\n        \"avatarUrl\": \"https://picsum.photos/500/500?random=7\",\r\n        \"address\": \"Saint-Pierre-du-Mont ; 14km\",\r\n        \"phoneNumber\": \"+33 6 96 57 90 01\",\r\n        \"aboutMe\": \"Vestibulum non leo vel mi ultrices pellentesque.\",\r\n        \"favorite\": true,\r\n        \"webSite\": \"www.facebook.fr/laetitia\"\r\n    },\r\n    {\r\n        \"id\": 8,\r\n        \"name\": \"Dan API\",\r\n        \"avatarUrl\": \"https://picsum.photos/500/500?random=8\",\r\n        \"address\": \"Saint-Pierre-du-Mont ; 1km\",\r\n        \"phoneNumber\": \"+33 6 86 57 90 14\",\r\n        \"aboutMe\": \"Cras non dapibus arcu.\",\r\n        \"favorite\": true,\r\n        \"webSite\": \"www.facebook.fr/dan\"\r\n    },\r\n    {\r\n        \"id\": 9,\r\n        \"name\": \"Joseph API\",\r\n        \"avatarUrl\": \"https://picsum.photos/500/500?random=9\",\r\n        \"address\": \"Saint-Pierre-du-Mont ; 2km\",\r\n        \"phoneNumber\": \"+33 6 86 57 90 14\",\r\n        \"aboutMe\": \"Donec neque odio, eleifend a luctus ac, tempor non libero. Nunc ullamcorper, erat non viverra feugiat, massa odio facilisis ligula, ut pharetra risus libero eget elit. Nulla malesuada, purus eu malesuada malesuada, est purus ullamcorper ipsum, quis congue velit mi sed lorem.\",\r\n        \"favorite\": false,\r\n        \"webSite\": \"www.facebook.fr/joseph\"\r\n    },\r\n    {\r\n        \"id\": 10,\r\n        \"name\": \"Emma API\",\r\n        \"avatarUrl\": \"https://picsum.photos/500/500?random=10\",\r\n        \"address\": \"Saint-Pierre-du-Mont ; 1km\",\r\n        \"phoneNumber\": \"+33 6 14 71 70 18\",\r\n        \"aboutMe\": \"Aliquam erat volutpat. Mauris at massa nibh. Suspendisse auctor fermentum orci, nec auctor tortor. Ut eleifend euismod turpis vitae tempus. Sed a tincidunt ex. Etiam ut nibh ante. Fusce maximus lorem nibh, at sollicitudin ante ultrices vel. Praesent ac luctus ante, eu lacinia diam. Quisque malesuada vel arcu vitae euismod. Ut egestas mattis euismod.\\n\\nVestibulum non leo vel mi ultrices pellentesque. Praesent ornare ligula non elit consectetur, pellentesque fringilla eros placerat. Etiam consequat dui eleifend justo iaculis, ac ullamcorper velit consectetur. Aliquam vitae elit ac ante ultricies aliquet vel at felis. Suspendisse ac placerat odio. Cras non dapibus arcu. Fusce pharetra nisi at orci rhoncus, vitae tristique nibh euismod.\",\r\n        \"favorite\": false,\r\n        \"webSite\": \"www.facebook.fr/emma\"\r\n    },\r\n    {\r\n        \"id\": 11,\r\n        \"name\": \"Patrick API\",\r\n        \"avatarUrl\": \"https://picsum.photos/500/500?random=11\",\r\n        \"address\": \"Saint-Pierre-du-Mont ; 5km\",\r\n        \"phoneNumber\": \"+33 6 20 40 60 80\",\r\n        \"aboutMe\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce porttitor molestie libero, nec porta lectus posuere a. Curabitur in purus at enim commodo accumsan. Nullam molestie diam a massa finibus, in bibendum nulla ullamcorper. Nunc at enim enim. Maecenas quis posuere nisi. Mauris suscipit cursus velit id condimentum. Ut finibus turpis at nulla finibus sollicitudin. Nunc dolor mauris, blandit id ullamcorper vel, lacinia ac nisi. Vestibulum et sapien tempor, egestas lorem vitae, faucibus urna. Duis id velit lacus.\",\r\n        \"favorite\": true,\r\n        \"webSite\": \"www.facebook.fr/patrick\"\r\n    },\r\n    {\r\n        \"id\": 12,\r\n        \"name\": \"Ludovic API\",\r\n        \"avatarUrl\": \"https://picsum.photos/500/500?random=12\",\r\n        \"address\": \"Saint-Pierre-du-Mont ; 5km\",\r\n        \"phoneNumber\": \"+33 6 00 01 10 11\",\r\n        \"aboutMe\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce porttitor molestie libero, nec porta lectus posuere a. Curabitur in purus at enim commodo accumsan. Nullam molestie diam a massa finibus, in bibendum nulla ullamcorper. Nunc at enim enim. Maecenas quis posuere nisi. Mauris suscipit cursus velit id condimentum. Ut finibus turpis at nulla finibus sollicitudin. Nunc dolor mauris, blandit id ullamcorper vel, lacinia ac nisi. Vestibulum et sapien tempor, egestas lorem vitae, faucibus urna. Duis id odio massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\",\r\n        \"favorite\": false,\r\n        \"webSite\": \"www.facebook.fr/ludovic\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://144.24.197.144:8080/api/handymens",
+					"protocol": "http",
+					"host": [
+						"144",
+						"24",
+						"197",
+						"144"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"handymens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ONE",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "http://144.24.197.144:8080/api/handymans/1",
+					"protocol": "http",
+					"host": [
+						"144",
+						"24",
+						"197",
+						"144"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"handymans",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE ONE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://144.24.197.144:8080/api/handymans/1",
+					"protocol": "http",
+					"host": [
+						"144",
+						"24",
+						"197",
+						"144"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"handymans",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
