@@ -9,7 +9,8 @@ let HandyManSchema = new Schema({
     phoneNumber: String,
     address: String,
     favorite: Boolean,
-    webSite: String
+    webSite: String,
+    gallery: [String]
 }, { _id: false });
 
 HandyManSchema.virtual('id').get(function () {

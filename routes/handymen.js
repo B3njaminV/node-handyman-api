@@ -26,7 +26,7 @@ function getOne(req, res) {
 }
 
 function create(req, res) {
-    const { id, name, avatarUrl, aboutMe, phoneNumber, address, favorite, webSite } = req.body;
+    const { id, name, avatarUrl, aboutMe, phoneNumber, address, favorite, webSite, gallery } = req.body;
 
     if (!id) {
         return res.status(400).json({ error: 'ID is required' });
@@ -40,7 +40,8 @@ function create(req, res) {
         phoneNumber: phoneNumber,
         address: address,
         favorite: favorite,
-        webSite: webSite
+        webSite: webSite,
+        gallery: gallery || []
     });
 
     handyman.save()
@@ -77,7 +78,8 @@ async function createMany(req, res) {
                 phoneNumber: handyman.phoneNumber,
                 address: handyman.address,
                 favorite: handyman.favorite,
-                webSite: handyman.webSite
+                webSite: handyman.webSite,
+                gallery: handyman.gallery || []
             };
 
         });
